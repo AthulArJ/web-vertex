@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vertex — animated logo</title>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  svg { width: 360px; height: auto; }
+
+  .stroke {
+    stroke: #16151a;
+    stroke-width: 11;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: draw 1s ease-out forwards;
+  }
+  .stroke.right {
+    animation-delay: 0.15s;
+  }
+  .dot {
+    fill: #534AB7;
+    opacity: 0;
+    transform-origin: 270px 100px;
+    animation: pop 0.5s ease-out forwards, pulse 2.4s ease-in-out infinite;
+    animation-delay: 1s, 1.6s;
+  }
+  .word {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    fill: #16151a;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out forwards;
+    animation-delay: 1.1s;
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.25); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
+  <line class="stroke left"  x1="215" y1="180" x2="270" y2="100"/>
+  <line class="stroke right" x1="325" y1="180" x2="270" y2="100"/>
+  <circle class="dot" cx="270" cy="100" r="11"/>
+  <text class="word" x="270" y="235" text-anchor="middle">VERTEX</text>
+</svg>
+
+</body>
+</html>

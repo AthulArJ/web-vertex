@@ -1,0 +1,102 @@
+.shiny-neon-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #0FFF50;
+}
+
+.neon-green-base {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 65% 40%,
+      #15FF55 0%,
+      #0FFF50 35%,
+      #05D43F 65%,
+      #028026 100%);
+}
+
+.neon-shiny-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 30%,
+      rgba(15, 255, 80, 0.0) 60%,
+      rgba(255, 255, 255, 0.25) 100%);
+  animation: shinySheenPulse 8s ease-in-out infinite alternate;
+}
+
+.neon-radial-glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(15, 255, 80, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+@keyframes shinySheenPulse {
+  0% {
+    opacity: 0.85;
+    transform: scale(1) rotate(0deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+/* We preserve the cinematic push animation as requested previously, 
+   but it will now animate the video element itself! */
+.hcr-animate {
+  animation: cinematicPush 25s ease-in-out infinite alternate;
+}
+
+.hcr-static {
+  transform: scale(1);
+}
+
+@keyframes cinematicPush {
+  0% {
+    transform: scale(1.02) translate(0px, 0px);
+  }
+
+  100% {
+    transform: scale(1.06) translate(-1%, 1%);
+  }
+}
+
+/* 
+ * Replicate Quantra's hero-video-overlay:
+ * Quantra uses a deep black overlay over the video so the white text pops,
+ * but allows the matrix elements to shine through.
+ */
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.60) 45%,
+      rgba(0, 0, 0, 0.20) 100%);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero-video-overlay {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.50) 60%,
+        rgba(0, 0, 0, 0.20) 100%);
+  }
+}

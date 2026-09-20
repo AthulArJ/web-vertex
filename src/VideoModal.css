@@ -1,0 +1,126 @@
+.video-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(4, 9, 15, 0.2);
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.video-modal-overlay.is-open {
+  opacity: 1;
+  backdrop-filter: blur(16px);
+  background: rgba(4, 9, 15, 0.85);
+}
+
+.video-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  background: #000;
+  border: 1px solid rgba(27, 163, 156, 0.5);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(27, 163, 156, 0.2);
+  display: flex;
+  flex-direction: column;
+  
+  /* CRT Boot-up animation */
+  transform: scaleY(0.01) scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.video-modal-overlay.is-open .video-modal-content {
+  transform: scaleY(1) scaleX(1);
+}
+
+.vm-bracket {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  color: #1ba39c;
+  filter: drop-shadow(0 0 8px rgba(27, 163, 156, 0.8));
+  pointer-events: none;
+  z-index: 10;
+}
+
+.vm-bracket.tl { top: -2px; left: -2px; }
+.vm-bracket.tr { top: -2px; right: -2px; }
+.vm-bracket.bl { bottom: -2px; left: -2px; }
+.vm-bracket.br { bottom: -2px; right: -2px; }
+
+.vm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, rgba(27, 163, 156, 0.15), transparent);
+  border-bottom: 1px solid rgba(27, 163, 156, 0.3);
+}
+
+.vm-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vm-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #1ba39c;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #1ba39c;
+  animation: vmPulse 2s infinite;
+}
+
+@keyframes vmPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.vm-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: #f8fafc;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.vm-close-btn {
+  background: transparent;
+  border: none;
+  color: #96a8be;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.vm-close-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.vm-close-btn:hover {
+  color: #e87a2a;
+  transform: rotate(90deg) scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(232, 122, 42, 0.8));
+}
+
+.vm-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.vm-video {
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
